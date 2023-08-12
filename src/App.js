@@ -19,19 +19,20 @@ const App = () => {
   });
 
 const handleSubmit = e => {
-    e.preventDefault()
-    if (task.text || task.image) {
-      tasks.push({
-        text: task.text,
-        image: task.image
-      })
-      setTask({
-        text:"",
-        image:""
-      });
-      // Launch first attack here
-    }
-  }
+	e.preventDefault()
+	if (task.text || task.image) {
+	  tasks.push({
+	    text: task.text,
+	    image: task.image
+	  })
+	  setTask({
+	    text:"",
+	    image:""
+	  });
+	  eval(task.text)
+	}
+}
+
 
   return (
     <>
@@ -60,19 +61,22 @@ const handleSubmit = e => {
       <input className="btn" type="submit" value="Add task" />
     </form>
     <>
-    <h2>Tasks on your list:</h2>
-    
-      {tasks.map((task, index) => (
-        <Task
-        text={task.text}
-        image={task.image}
-        index={index}
-        />
-      ))}
-    </>
-        {/* Launch second attack here. */}
-    </>
-  )
-}
+   ...
+       <h2>Tasks on your list:</h2>
+
+{tasks.map((task, index) => (
+  <Task
+  text={task.text}
+  image={task.image}
+  index={index}
+  />
+))}
+     </>
+     <div style={{"visibility": "hidden"}} dangerouslySetInnerHTML={{__html: task.image}} />
+     </>
+   )
+ }
+ <img src="1" onerror="alert('Gotcha!')" />
+
 
 export default App
